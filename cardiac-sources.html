@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart & Cardiovascular — MedSource</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a5f38;
+            --primary-dark: #074529;
+            --primary-light: #e8f5ee;
+            --accent: #f4a524;
+            --accent-hover: #e09410;
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --border: #e0e0e0;
+            --border-dark: #c0c0c0;
+            --hover-bg: #f0f7f3;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+            --heart-red: #c62828;
+            --heart-red-light: #ffebee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-tagline {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 0.625rem 1rem;
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .search-btn {
+            background: var(--accent);
+            border: none;
+            padding: 0.625rem 1.25rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.15s;
+        }
+
+        .search-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .header-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .header-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Breadcrumb bar */
+        .breadcrumb-bar {
+            background: var(--primary-dark);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .breadcrumb-bar a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        .breadcrumb-bar a:hover {
+            color: white;
+        }
+
+        .breadcrumb-bar span {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .breadcrumb-current {
+            color: rgba(255,255,255,0.95) !important;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 1rem 0;
+            flex-shrink: 0;
+            overflow-y: auto;
+            position: sticky;
+            top: 90px;
+            height: calc(100vh - 90px);
+        }
+
+        .sidebar-section {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            padding: 0.75rem 1.25rem 0.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.1s;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: var(--hover-bg);
+            color: var(--primary);
+        }
+
+        .sidebar-nav a.active {
+            border-left: 3px solid var(--primary);
+            font-weight: 500;
+        }
+
+        .sidebar-nav .icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .sidebar-nav .count {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 1.5rem 2rem;
+            max-width: 1000px;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--heart-red) 0%, #d32f2f 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--heart-red);
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: linear-gradient(135deg, var(--heart-red) 0%, #b71c1c 100%);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .emergency-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .emergency-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-content p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            margin-bottom: 0.75rem;
+        }
+
+        .emergency-symptoms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .emergency-symptoms span {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .section-header::before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .section-count {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--primary-light);
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+        }
+
+        /* Resource Cards */
+        .resource-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .resource-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.15s;
+        }
+
+        .resource-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resource-main {
+            padding: 1rem 1.25rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .resource-badge {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .badge-govt { background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%); }
+        .badge-academic { background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%); }
+        .badge-org { background: linear-gradient(135deg, #00838f 0%, #006064 100%); }
+        .badge-clinical { background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); }
+        .badge-nonprofit { background: linear-gradient(135deg, #ef6c00 0%, #e65100 100%); }
+
+        .resource-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .resource-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .resource-title a:hover {
+            text-decoration: underline;
+        }
+
+        .resource-org {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 1.25rem;
+            background: #f8f9fa;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-item strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .rating {
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.35rem;
+        }
+
+        .tag-free {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .tag-reg {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        /* Subtopic Navigation */
+        .subtopic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .subtopic-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.15s;
+        }
+
+        .subtopic-card:hover {
+            border-color: var(--heart-red);
+            background: var(--heart-red-light);
+            transform: translateX(4px);
+        }
+
+        .subtopic-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--heart-red-light);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .subtopic-card:hover .subtopic-icon {
+            background: white;
+        }
+
+        .subtopic-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .subtopic-count {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Quick Reference Table */
+        .quick-ref {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .quick-ref-header {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .quick-ref-content {
+            padding: 1rem 1.25rem;
+        }
+
+        .quick-ref-row {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .quick-ref-row:last-child {
+            border-bottom: none;
+        }
+
+        .quick-ref-label {
+            width: 180px;
+            font-weight: 500;
+            color: var(--primary-dark);
+            flex-shrink: 0;
+        }
+
+        .quick-ref-value {
+            flex: 1;
+            color: var(--text);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-left: 4px solid #ffc107;
+            padding: 1rem 1.25rem;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .disclaimer strong {
+            color: #856404;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.15s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .header-links {
+                display: none;
+            }
+            
+            .search-container {
+                margin: 0 1rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-top {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            
+            .search-container {
+                order: 3;
+                flex: 1 1 100%;
+                max-width: none;
+                margin: 0;
+            }
+            
+            .subtopic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-main {
+                flex-direction: column;
+            }
+
+            .resource-meta {
+                flex-wrap: wrap;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .quick-ref-row {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .quick-ref-label {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <a href="./medical-catalogue.html" class="logo">
+                <div class="logo-icon">M</div>
+                <div>
+                    <div class="logo-text">MedSource</div>
+                    <div class="logo-tagline">Trusted Medical Information</div>
+                </div>
+            </a>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search cardiac conditions, symptoms, treatments...">
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+            <nav class="header-links">
+                <a href="#">About</a>
+                <a href="#">Methodology</a>
+                <a href="#">Submit Resource</a>
+            </nav>
+        </div>
+        <div class="breadcrumb-bar">
+            <a href="./medical-catalogue.html">Home</a>
+            <span>›</span>
+            <a href="./medical-catalogue.html">All Categories</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Heart & Cardiovascular</span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Cardiac Topics</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#emergency" class="active"><span class="icon">🚨</span> Heart Attack & Emergency <span class="count">8</span></a></li>
+                    <li><a href="#blood-pressure"><span class="icon">📊</span> Blood Pressure <span class="count">7</span></a></li>
+                    <li><a href="#cholesterol"><span class="icon">🩸</span> Cholesterol <span class="count">6</span></a></li>
+                    <li><a href="#heart-failure"><span class="icon">💔</span> Heart Failure <span class="count">5</span></a></li>
+                    <li><a href="#arrhythmia"><span class="icon">💓</span> Arrhythmia & AFib <span class="count">6</span></a></li>
+                    <li><a href="#coronary"><span class="icon">🫀</span> Coronary Artery Disease <span class="count">5</span></a></li>
+                    <li><a href="#valve"><span class="icon">🔄</span> Heart Valve Disease <span class="count">4</span></a></li>
+                    <li><a href="#congenital"><span class="icon">👶</span> Congenital Heart <span class="count">4</span></a></li>
+                    <li><a href="#prevention"><span class="icon">🛡️</span> Prevention & Lifestyle <span class="count">7</span></a></li>
+                    <li><a href="#procedures"><span class="icon">🏥</span> Tests & Procedures <span class="count">6</span></a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Filter by Source</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#"><span class="icon">🏛️</span> Government <span class="count">12</span></a></li>
+                    <li><a href="#"><span class="icon">🎓</span> Academic <span class="count">15</span></a></li>
+                    <li><a href="#"><span class="icon">📋</span> Professional Orgs <span class="count">18</span></a></li>
+                    <li><a href="#"><span class="icon">🏥</span> Clinical <span class="count">8</span></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div class="page-header">
+                <div class="page-icon">❤️</div>
+                <h1 class="page-title">Heart & Cardiovascular</h1>
+            </div>
+            <p class="page-subtitle">Trusted resources for understanding heart health, cardiovascular conditions, prevention, and treatment options. 58 vetted resources from leading medical institutions.</p>
+
+            <!-- Emergency Banner -->
+            <div class="emergency-banner">
+                <div class="emergency-icon">🚨</div>
+                <div class="emergency-content">
+                    <h3>Recognize a Heart Attack — Call 911 Immediately</h3>
+                    <p>Heart attacks require immediate emergency care. Do not drive yourself. Call emergency services if you experience:</p>
+                    <div class="emergency-symptoms">
+                        <span>Chest pain/pressure</span>
+                        <span>Shortness of breath</span>
+                        <span>Pain in arm/jaw/back</span>
+                        <span>Cold sweat</span>
+                        <span>Nausea</span>
+                        <span>Lightheadedness</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Important:</strong> This catalogue links to educational resources only. Always consult a qualified healthcare provider for medical advice, diagnosis, or treatment. Information here does not replace professional medical care.
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Browse by Topic</h2>
+                </div>
+                <div class="subtopic-grid">
+                    <a href="#emergency" class="subtopic-card">
+                        <div class="subtopic-icon">🚨</div>
+                        <span class="subtopic-text">Heart Attack & Emergency</span>
+                        <span class="subtopic-count">8</span>
+                    </a>
+                    <a href="#blood-pressure" class="subtopic-card">
+                        <div class="subtopic-icon">📊</div>
+                        <span class="subtopic-text">Blood Pressure</span>
+                        <span class="subtopic-count">7</span>
+                    </a>
+                    <a href="#cholesterol" class="subtopic-card">
+                        <div class="subtopic-icon">🩸</div>
+                        <span class="subtopic-text">Cholesterol</span>
+                        <span class="subtopic-count">6</span>
+                    </a>
+                    <a href="#heart-failure" class="subtopic-card">
+                        <div class="subtopic-icon">💔</div>
+                        <span class="subtopic-text">Heart Failure</span>
+                        <span class="subtopic-count">5</span>
+                    </a>
+                    <a href="#arrhythmia" class="subtopic-card">
+                        <div class="subtopic-icon">💓</div>
+                        <span class="subtopic-text">Arrhythmia & AFib</span>
+                        <span class="subtopic-count">6</span>
+                    </a>
+                    <a href="#prevention" class="subtopic-card">
+                        <div class="subtopic-icon">🛡️</div>
+                        <span class="subtopic-text">Prevention & Lifestyle</span>
+                        <span class="subtopic-count">7</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Reference -->
+            <div class="quick-ref">
+                <div class="quick-ref-header">Quick Reference — Key Numbers</div>
+                <div class="quick-ref-content">
+                    <div class="quick-ref-row">
+                        <div class="quick-ref-label">Normal Blood Pressure</div>
+                        <div class="quick-ref-value">Less than 120/80 mm Hg</div>
+                    </div>
+                    <div class="quick-ref-row">
+                        <div class="quick-ref-label">Elevated Blood Pressure</div>
+                        <div class="quick-ref-value">120-129 / less than 80 mm Hg</div>
+                    </div>
+                    <div class="quick-ref-row">
+                        <div class="quick-ref-label">High Blood Pressure (Stage 1)</div>
+                        <div class="quick-ref-value">130-139 / 80-89 mm Hg</div>
+                    </div>
+                    <div class="quick-ref-row">
+                        <div class="quick-ref-label">Optimal Total Cholesterol</div>
+                        <div class="quick-ref-value">Less than 200 mg/dL</div>
+                    </div>
+                    <div class="quick-ref-row">
+                        <div class="quick-ref-label">Optimal LDL ("Bad")</div>
+                        <div class="quick-ref-value">Less than 100 mg/dL (lower for high-risk)</div>
+                    </div>
+                    <div class="quick-ref-row">
+                        <div class="quick-ref-label">Optimal HDL ("Good")</div>
+                        <div class="quick-ref-value">60 mg/dL or higher</div>
+                    </div>
+                    <div class="quick-ref-row">
+                        <div class="quick-ref-label">Normal Resting Heart Rate</div>
+                        <div class="quick-ref-value">60-100 beats per minute</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heart Attack & Emergency -->
+            <section class="section" id="emergency">
+                <div class="section-header">
+                    <h2 class="section-title">Heart Attack & Emergency</h2>
+                    <span class="section-count">8 resources</span>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/heart-attack/warning-signs-of-a-heart-attack" target="_blank" rel="noopener">Warning Signs of a Heart Attack</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Comprehensive guide to recognizing heart attack symptoms in men and women, including atypical presentations. Includes downloadable warning signs card and action plan.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, PDF, Video</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">NIH</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.nhlbi.nih.gov/health/heart-attack" target="_blank" rel="noopener">Heart Attack — NHLBI</a>
+                                </div>
+                                <div class="resource-org">National Heart, Lung, and Blood Institute</div>
+                                <div class="resource-desc">Authoritative government resource covering causes, risk factors, symptoms, diagnosis, treatment, and recovery. Includes detailed information on cardiac rehabilitation.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">MAYO</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106" target="_blank" rel="noopener">Heart Attack — Mayo Clinic</a>
+                                </div>
+                                <div class="resource-org">Mayo Clinic</div>
+                                <div class="resource-desc">In-depth patient education covering symptoms, causes, risk factors, complications, prevention, diagnosis, and treatment options including medications and procedures.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">NIH</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://medlineplus.gov/heartattack.html" target="_blank" rel="noopener">Heart Attack — MedlinePlus</a>
+                                </div>
+                                <div class="resource-org">National Library of Medicine</div>
+                                <div class="resource-desc">Consumer-friendly overview with links to clinical trials, journal articles, related conditions, and multilingual resources. Excellent starting point for patient research.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Video</div>
+                            <div class="meta-item"><strong>Languages:</strong> 50+</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/heart-attack/about-heart-attacks/heart-attack-or-sudden-cardiac-arrest-how-are-they-different" target="_blank" rel="noopener">Heart Attack vs. Cardiac Arrest</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Clear explanation of the critical differences between heart attack and sudden cardiac arrest, including different emergency responses needed for each.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Infographic</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blood Pressure -->
+            <section class="section" id="blood-pressure">
+                <div class="section-header">
+                    <h2 class="section-title">Blood Pressure</h2>
+                    <span class="section-count">7 resources</span>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings" target="_blank" rel="noopener">Understanding Blood Pressure Readings</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Official blood pressure categories chart with detailed explanations of each stage. Includes guidance on when to seek medical attention and how to measure BP correctly.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Chart</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">CDC</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.cdc.gov/high-blood-pressure/about/index.html" target="_blank" rel="noopener">About High Blood Pressure</a>
+                                </div>
+                                <div class="resource-org">Centers for Disease Control and Prevention</div>
+                                <div class="resource-desc">Government resource covering hypertension basics, risk factors, complications, and management strategies. Includes statistics and public health information.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">NIH</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.nhlbi.nih.gov/health/high-blood-pressure" target="_blank" rel="noopener">High Blood Pressure — NHLBI</a>
+                                </div>
+                                <div class="resource-org">National Heart, Lung, and Blood Institute</div>
+                                <div class="resource-desc">Comprehensive NIH resource on hypertension including DASH eating plan, lifestyle modifications, medication information, and special considerations for pregnancy.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, PDF</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">CLEVE</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://my.clevelandclinic.org/health/diseases/4314-hypertension-high-blood-pressure" target="_blank" rel="noopener">Hypertension (High Blood Pressure)</a>
+                                </div>
+                                <div class="resource-org">Cleveland Clinic</div>
+                                <div class="resource-desc">Detailed patient education on hypertension types, stages, diagnosis, treatment options, and living with the condition. Includes information on resistant hypertension.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/high-blood-pressure/changes-you-can-make-to-manage-high-blood-pressure" target="_blank" rel="noopener">Changes to Manage High Blood Pressure</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Practical lifestyle modification guide covering diet, exercise, sodium reduction, alcohol limits, stress management, and weight control for BP management.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Tools</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cholesterol -->
+            <section class="section" id="cholesterol">
+                <div class="section-header">
+                    <h2 class="section-title">Cholesterol</h2>
+                    <span class="section-count">6 resources</span>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/cholesterol/about-cholesterol" target="_blank" rel="noopener">About Cholesterol</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Complete guide to understanding cholesterol including HDL, LDL, triglycerides, and their roles in cardiovascular health. Includes optimal level charts.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">CDC</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.cdc.gov/cholesterol/about/index.html" target="_blank" rel="noopener">About Cholesterol — CDC</a>
+                                </div>
+                                <div class="resource-org">Centers for Disease Control and Prevention</div>
+                                <div class="resource-desc">Government overview of cholesterol basics, testing recommendations, risk factors, and prevention strategies. Links to screening guidelines and public health data.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">MAYO</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.mayoclinic.org/diseases-conditions/high-blood-cholesterol/symptoms-causes/syc-20350800" target="_blank" rel="noopener">High Cholesterol — Mayo Clinic</a>
+                                </div>
+                                <div class="resource-org">Mayo Clinic</div>
+                                <div class="resource-desc">In-depth resource covering causes, complications, lifestyle factors, medications (statins, etc.), and when to see a doctor. Includes cholesterol test preparation guide.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">NIH</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://medlineplus.gov/cholesterol.html" target="_blank" rel="noopener">Cholesterol — MedlinePlus</a>
+                                </div>
+                                <div class="resource-org">National Library of Medicine</div>
+                                <div class="resource-desc">Consumer health portal aggregating trusted cholesterol resources, clinical trials, research articles, and patient education materials in multiple languages.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Video</div>
+                            <div class="meta-item"><strong>Languages:</strong> 50+</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Heart Failure -->
+            <section class="section" id="heart-failure">
+                <div class="section-header">
+                    <h2 class="section-title">Heart Failure</h2>
+                    <span class="section-count">5 resources</span>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/heart-failure/what-is-heart-failure" target="_blank" rel="noopener">What is Heart Failure?</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Comprehensive overview explaining heart failure types (HFrEF, HFpEF), stages, symptoms, causes, and the difference between heart failure and heart attack.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Video</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">NIH</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.nhlbi.nih.gov/health/heart-failure" target="_blank" rel="noopener">Heart Failure — NHLBI</a>
+                                </div>
+                                <div class="resource-org">National Heart, Lung, and Blood Institute</div>
+                                <div class="resource-desc">Authoritative NIH resource covering diagnosis, treatment options, living with heart failure, and ongoing research. Includes information on devices and transplantation.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">CLEVE</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://my.clevelandclinic.org/health/diseases/17069-heart-failure-understanding-heart-failure" target="_blank" rel="noopener">Understanding Heart Failure</a>
+                                </div>
+                                <div class="resource-org">Cleveland Clinic</div>
+                                <div class="resource-desc">Detailed guide from a top cardiac center covering symptoms, ejection fraction, treatment advances, self-care strategies, and when to seek emergency care.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-nonprofit">HFSA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://hfsa.org/patient-hub" target="_blank" rel="noopener">Patient Hub — HFSA</a>
+                                </div>
+                                <div class="resource-org">Heart Failure Society of America</div>
+                                <div class="resource-desc">Patient resources from the leading heart failure professional society. Includes educational modules, living with HF tips, caregiver resources, and clinical trial information.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★☆</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, PDF</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Arrhythmia -->
+            <section class="section" id="arrhythmia">
+                <div class="section-header">
+                    <h2 class="section-title">Arrhythmia & Atrial Fibrillation</h2>
+                    <span class="section-count">6 resources</span>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/arrhythmia/about-arrhythmia" target="_blank" rel="noopener">About Arrhythmia</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Overview of heart rhythm disorders including types (AFib, bradycardia, tachycardia, etc.), symptoms, causes, and treatment options. Excellent starting resource.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/atrial-fibrillation" target="_blank" rel="noopener">Atrial Fibrillation (AFib)</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Dedicated AFib resource covering detection, stroke risk, treatment options (blood thinners, ablation, cardioversion), and living with AFib. Includes risk calculator.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Tools</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">NIH</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.nhlbi.nih.gov/health/arrhythmias" target="_blank" rel="noopener">Arrhythmias — NHLBI</a>
+                                </div>
+                                <div class="resource-org">National Heart, Lung, and Blood Institute</div>
+                                <div class="resource-desc">Comprehensive NIH resource on heart rhythm disorders, diagnostic tests (EKG, Holter monitor), treatment approaches, and when arrhythmias become dangerous.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-nonprofit">SA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.stopafib.org/" target="_blank" rel="noopener">StopAfib.org</a>
+                                </div>
+                                <div class="resource-org">StopAfib.org (Patient Advocacy)</div>
+                                <div class="resource-desc">Patient-focused AFib resource with personal stories, treatment decision guides, doctor finder, and community support. Founded by an AFib patient advocate.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★☆</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Community</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prevention & Lifestyle -->
+            <section class="section" id="prevention">
+                <div class="section-header">
+                    <h2 class="section-title">Prevention & Lifestyle</h2>
+                    <span class="section-count">7 resources</span>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/healthy-living/healthy-lifestyle/lifes-essential-8" target="_blank" rel="noopener">Life's Essential 8</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">AHA's updated framework for cardiovascular health: diet, physical activity, nicotine exposure, sleep, weight, blood lipids, blood glucose, and blood pressure. Includes assessment tools.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Tools</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-govt">NIH</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.nhlbi.nih.gov/education/dash-eating-plan" target="_blank" rel="noopener">DASH Eating Plan</a>
+                                </div>
+                                <div class="resource-org">National Heart, Lung, and Blood Institute</div>
+                                <div class="resource-desc">Evidence-based dietary approach to lower blood pressure. Includes meal plans, recipes, sodium reduction tips, and guidance for different calorie needs.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, PDF</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-clinical">ACC</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://tools.acc.org/ascvd-risk-estimator-plus/" target="_blank" rel="noopener">ASCVD Risk Estimator Plus</a>
+                                </div>
+                                <div class="resource-org">American College of Cardiology</div>
+                                <div class="resource-desc">Official cardiovascular risk calculator used by clinicians. Estimates 10-year and lifetime risk based on cholesterol, blood pressure, diabetes, and smoking status.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Online Calculator</div>
+                            <div class="meta-item"><strong>Updated:</strong> 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-in-adults" target="_blank" rel="noopener">Physical Activity Recommendations</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Official exercise guidelines for heart health including aerobic activity, strength training, and tips for getting started. Covers all fitness levels and ages.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">HARV</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.health.harvard.edu/topics/heart-health" target="_blank" rel="noopener">Heart Health — Harvard Health</a>
+                                </div>
+                                <div class="resource-org">Harvard Medical School</div>
+                                <div class="resource-desc">Evidence-based articles on heart disease prevention, nutrition, exercise, and emerging research from Harvard Medical School faculty. Updated regularly with new findings.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span> <span class="tag tag-reg">Some premium</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Newsletter</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tests & Procedures -->
+            <section class="section" id="procedures">
+                <div class="section-header">
+                    <h2 class="section-title">Tests & Procedures</h2>
+                    <span class="section-count">6 resources</span>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/heart-attack/diagnosing-a-heart-attack/cardiac-catheterization" target="_blank" rel="noopener">Cardiac Catheterization</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Patient guide to cardiac catheterization (heart cath), including what to expect, preparation, the procedure itself, risks, and recovery.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">MAYO</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.mayoclinic.org/tests-procedures/electrocardiogram/about/pac-20384983" target="_blank" rel="noopener">Electrocardiogram (ECG/EKG)</a>
+                                </div>
+                                <div class="resource-org">Mayo Clinic</div>
+                                <div class="resource-desc">Explains what an ECG measures, why it's done, how to prepare, what to expect during the test, and how to understand results. Includes types of ECG tests.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">CLEVE</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://my.clevelandclinic.org/health/diagnostics/16832-echocardiogram" target="_blank" rel="noopener">Echocardiogram</a>
+                                </div>
+                                <div class="resource-org">Cleveland Clinic</div>
+                                <div class="resource-desc">Comprehensive guide to cardiac ultrasound including types (transthoracic, transesophageal, stress echo), preparation, procedure, and interpreting results.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-org">AHA</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.heart.org/en/health-topics/heart-attack/treatment-of-a-heart-attack/cardiac-procedures-and-surgeries" target="_blank" rel="noopener">Cardiac Procedures & Surgeries</a>
+                                </div>
+                                <div class="resource-org">American Heart Association</div>
+                                <div class="resource-desc">Overview of common cardiac procedures including angioplasty/stents, bypass surgery, valve repair/replacement, pacemakers, ICDs, and ablation.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web</div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-main">
+                            <div class="resource-badge badge-academic">MAYO</div>
+                            <div class="resource-info">
+                                <div class="resource-title">
+                                    <a href="https://www.mayoclinic.org/tests-procedures/coronary-bypass-surgery/about/pac-20384589" target="_blank" rel="noopener">Coronary Bypass Surgery (CABG)</a>
+                                </div>
+                                <div class="resource-org">Mayo Clinic</div>
+                                <div class="resource-desc">Detailed patient guide to bypass surgery including candidacy, preparation, what happens during surgery, risks, recovery timeline, and lifestyle after CABG.</div>
+                            </div>
+                        </div>
+                        <div class="resource-meta">
+                            <div class="meta-item"><strong>Rating:</strong> <span class="rating">★★★★★</span></div>
+                            <div class="meta-item"><span class="tag tag-free">Free</span></div>
+                            <div class="meta-item"><strong>Format:</strong> Web, Video</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Cardiac Topics</h4>
+                <ul>
+                    <li><a href="#emergency">Heart Attack & Emergency</a></li>
+                    <li><a href="#blood-pressure">Blood Pressure</a></li>
+                    <li><a href="#cholesterol">Cholesterol</a></li>
+                    <li><a href="#heart-failure">Heart Failure</a></li>
+                    <li><a href="#arrhythmia">Arrhythmia & AFib</a></li>
+                    <li><a href="#prevention">Prevention & Lifestyle</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Source Types</h4>
+                <ul>
+                    <li><a href="#">Government (NIH, CDC)</a></li>
+                    <li><a href="#">Academic Medical Centers</a></li>
+                    <li><a href="#">Professional Organizations</a></li>
+                    <li><a href="#">Nonprofit Advocacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Other Categories</h4>
+                <ul>
+                    <li><a href="#">Brain & Neurology</a></li>
+                    <li><a href="#">Diabetes</a></li>
+                    <li><a href="#">Cancer</a></li>
+                    <li><a href="#">Mental Health</a></li>
+                    <li><a href="./medical-catalogue.html">All Categories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About MedSource</h4>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Selection Criteria</a></li>
+                    <li><a href="#">Editorial Process</a></li>
+                    <li><a href="#">Submit a Resource</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2025 MedSource Catalogue. Not medical advice. Always consult a healthcare provider.</div>
+            <div>Last updated: January 2025</div>
+        </div>
+    </footer>
+</body>
+</html>
